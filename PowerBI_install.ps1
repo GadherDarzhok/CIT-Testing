@@ -7,16 +7,17 @@
 $url = "https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe"
 
 # Specify the destination path for the downloaded installer
-$destination = "C:\Temp\Downloads\PBIDesktop_x64.exe"
+$Destfolder = "C:\Temp\Downloads"
+$Destination = $Destfolder + "\PBIDesktop_x64.exe"
 
 # Download the Power BI Desktop installer
-Invoke-WebRequest -Uri $url -OutFile $destination
+Invoke-WebRequest -Uri $url -OutFile ( New-Item -Path $Destination -Force )
 
 # Define the installation path (optional, change as needed)
 $installPath = "C:\Program Files\Power BI Desktop"
 
 # Start the silent installation process with additional parameters
-Start-Process -FilePath $destination -ArgumentList "/quiet ACCEPT_EULA=1 INSTALLLOCATION=$installPath" -Wait -NoNewWindow
+Start-Process -FilePath $Destination -ArgumentList "/quiet ACCEPT_EULA=1 INSTALLLOCATION=$installPath" -Wait -NoNewWindow
 
 # Cleanup - Remove the installer after installation
-Remove-Item -Path $destination -Force
+Remove-Item -Path $Destfolder -Force
