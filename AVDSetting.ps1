@@ -1,0 +1,7 @@
+#Registry settings for AVD
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name fEnableTimeZoneRedirection -PropertyType DWORD -Value 1 -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name MaxIdleTime -PropertyType DWORD -Value 7200000 -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name MaxDisconnectionTime -PropertyType DWORD -Value 7200000 -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name AllowMUUpdateService -PropertyType DWORD -Value 0 -Force
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Dsh" -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Dsh" -Name AllowNewsAndInterests -PropertyType DWORD -Value 0 -Force
